@@ -1,0 +1,9 @@
+{
+  "name": "projeto-live",
+  "version": "23.01.00",
+  "main": "",
+  "scripts": {},
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
