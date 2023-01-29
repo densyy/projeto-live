@@ -1,5 +1,6 @@
 /* ---- Importacoes ---- */
 
+const repositoryUsuarios = require('../repositories/usuarios')
 const helperResponse = require('../helpers/response')
 
 //
@@ -7,7 +8,8 @@ const helperResponse = require('../helpers/response')
 //
 
 function receberUsuarios (_request, response) {
-  helperResponse.enviarResposta(response, 200, {})
+  const usuarios = repositoryUsuarios.receberTodos()
+  helperResponse.enviarResposta(response, 200, usuarios)
 }
 
 //
@@ -16,11 +18,8 @@ function receberUsuarios (_request, response) {
 
 function adicionarUsuario (request, response) {
   const dados = request.body
-
-  const email = dados.email
-  const nome = dados.nome
-
-  helperResponse.enviarResposta(response, 200, `email: ${email} - nome: ${nome}`)
+  repositoryUsuarios.adicionar(dados)
+  helperResponse.enviarResposta(response, 200, 'Gravou certinho no banco!')
 }
 
 module.exports = {
